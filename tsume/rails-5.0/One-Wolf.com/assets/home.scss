@@ -1,0 +1,397 @@
+@function pow($number, $exp) {
+  $value: 1;
+  @if $exp > 0 {
+    @for $i from 1 through $exp {
+      $value: $value * $number;
+    }
+  }
+  @else if $exp < 0 {
+    @for $i from 1 through -$exp {
+      $value: $value / $number;
+    }
+  }
+  @return $value;
+}
+
+@function fact($number) {
+  $value: 1;
+  @if $number > 0 {
+    @for $i from 1 through $number {
+      $value: $value * $i;
+    }
+  }
+  @return $value;
+}
+
+@function pi() {
+  @return 3.14159265359;
+}
+
+@function rad($angle) {
+  $unit: unit($angle);
+  $unitless: $angle / ($angle * 0 + 1);
+  // If the angle has 'deg' as unit, convert to radians.
+  @if $unit==deg {
+    $unitless: $unitless / 180 * pi();
+  }
+  @return $unitless;
+}
+
+@function sin($angle) {
+  $sin: 0;
+  $angle: rad($angle);
+  // Iterate a bunch of times.
+  @for $i from 0 through 10 {
+    $sin: $sin + pow(-1, $i) * pow($angle, (2 * $i + 1)) / fact(2 * $i + 1);
+  }
+  @return $sin / ( $sin * 0 + 1);
+}
+
+@function cos($angle) {
+  $cos: 0;
+  $angle: rad($angle);
+  // Iterate a bunch of times.
+  @for $i from 0 through 10 {
+    $cos: $cos + pow(-1, $i) * pow($angle, 2 * $i) / fact(2 * $i);
+  }
+  @return $cos / ( $cos * 0 + 1);
+}
+
+@function tan($angle) {
+  @return sin($angle) / cos($angle);
+}
+
+@function sqrt($r) {
+  $x0: 1; // initial value
+  $solution: false;
+  @for $i from 1 through 10 {
+    @if abs(2 * $x0) < 0,
+    00000000000001 {
+      // Don't want to divide by a number smaller than this
+      $solution: false;
+    }
+    $x1: $x0 - ($x0 * $x0 - abs($r)) / (2 * $x0) !global;
+    @if ( abs($x1 - $x0) / abs($x1)) < 0,
+    0000001 {
+      // 7 digit accuracy is desired
+      $solution: true;
+    }
+    $x0: $x1;
+  }
+  @if $solution==true {
+    // If $r is negative, then the output will be multiplied with <a href="http://en.wikipedia.org/wiki/Imaginary_number">i = √-1</a>
+    // (√xy = √x√y) => √-$r = √-1√$r
+    @if $r < 0 {
+      @return $x1 #{i};
+    }
+    @else {
+      @return $x1;
+    }
+  }
+  @else {
+    @return "No solution";
+  }
+}
+
+$center-size: 710px;
+$wedge-size: 500px;
+$num-items: 9;
+$rgba-alpha-0: rgba(167, 116, 116, 1);
+$rgba-alpha-1: rgba(246, 216, 216, 1);
+$rgba-alpha-2: rgba(202, 158, 158, 1);
+$rgba-alpha-3: rgba(131, 81, 81, 1);
+$rgba-alpha-4: rgba(103, 46, 46, 1);
+$rgba-beta-0: rgba(167, 136, 116, 1);
+$rgba-beta-1: rgba(246, 228, 216, 1);
+$rgba-beta-2: rgba(202, 176, 158, 1);
+$rgba-beta-3: rgba(131, 101, 81, 1);
+$rgba-beta-4: rgba(103, 69, 46, 1);
+$rgba-gamma-0: rgba(139, 96, 117, 1);
+$rgba-gamma-1: rgba(205, 180, 192, 1);
+$rgba-gamma-2: rgba(168, 132, 149, 1);
+$rgba-gamma-3: rgba(109, 68, 87, 1);
+$rgba-gamma-4: rgba( 86, 38, 61, 1);
+$rgba-delta-0: rgba( 85, 87, 116, 1);
+$rgba-delta-1: rgba(153, 154, 171, 1);
+$rgba-delta-2: rgba(114, 116, 140, 1);
+$rgba-delta-3: rgba( 61, 63, 91, 1);
+$rgba-delta-4: rgba( 38, 39, 71, 1);
+$rgba-epsilon-0: rgba( 99, 79, 112, 1);
+$rgba-epsilon-1: rgba(157, 145, 164, 1);
+$rgba-epsilon-2: rgba(124, 108, 135, 1);
+$rgba-epsilon-3: rgba( 75, 56, 88, 1);
+$rgba-epsilon-4: rgba( 55, 33, 69, 1);
+$rgba-zeta-0: rgba( 72, 104, 100, 1);
+$rgba-zeta-1: rgba(134, 153, 151, 1);
+$rgba-zeta-2: rgba( 98, 125, 122, 1);
+$rgba-zeta-3: rgba( 50, 81, 78, 1);
+$rgba-zeta-4: rgba( 29, 64, 60, 1);
+$rgba-eta-0: rgba(146, 158, 110, 1);
+$rgba-eta-1: rgba(226, 233, 205, 1);
+$rgba-eta-2: rgba(181, 191, 150, 1);
+$rgba-eta-3: rgba(112, 124, 77, 1);
+$rgba-eta-4: rgba( 84, 97, 44, 1);
+$rgba-theta-0: rgba(112, 143, 99, 1);
+$rgba-theta-1: rgba(193, 211, 185, 1);
+$rgba-theta-2: rgba(147, 173, 136, 1);
+$rgba-theta-3: rgba( 82, 113, 70, 1);
+$rgba-theta-4: rgba( 54, 88, 39, 1);
+$rgba-iota-0: rgba(167, 165, 116, 1);
+$rgba-iota-1: rgba(246, 244, 216, 1);
+$rgba-iota-2: rgba(202, 200, 158, 1);
+$rgba-iota-3: rgba(131, 129, 81, 1);
+$rgba-iota-4: rgba(103, 101, 46, 1);
+$piece-opacity: .6;
+$colors-0: rgba($rgba-beta-0, $piece-opacity),
+rgba($rgba-alpha-0, $piece-opacity),
+rgba($rgba-gamma-0, $piece-opacity),
+rgba($rgba-epsilon-0, $piece-opacity),
+rgba($rgba-delta-0, $piece-opacity),
+rgba($rgba-zeta-0, $piece-opacity),
+rgba($rgba-theta-0, $piece-opacity),
+rgba($rgba-eta-0, $piece-opacity),
+rgba($rgba-iota-0, $piece-opacity);
+$colors-1: rgba($rgba-beta-1, $piece-opacity),
+rgba($rgba-alpha-1, $piece-opacity),
+rgba($rgba-gamma-1, $piece-opacity),
+rgba($rgba-epsilon-1, $piece-opacity),
+rgba($rgba-delta-1, $piece-opacity),
+rgba($rgba-zeta-1, $piece-opacity),
+rgba($rgba-theta-1, $piece-opacity),
+rgba($rgba-eta-1, $piece-opacity),
+rgba($rgba-iota-1, $piece-opacity);
+$colors-4: rgba($rgba-beta-4, $piece-opacity),
+rgba($rgba-alpha-4, $piece-opacity),
+rgba($rgba-gamma-4, $piece-opacity),
+rgba($rgba-epsilon-4, $piece-opacity),
+rgba($rgba-delta-4, $piece-opacity),
+rgba($rgba-zeta-4, $piece-opacity),
+rgba($rgba-theta-4, $piece-opacity),
+rgba($rgba-eta-4, $piece-opacity),
+rgba($rgba-iota-4, $piece-opacity);
+$svglogo-col: rgba(0, 0, 0, .8);
+$svglogo-circle-stroke: #ffffff;
+$svglogo-ow-stroke: #ffffff;
+$svglogo-circle-stroke-width: 3;
+$svglogo-ow-stroke-width: 3;
+
+.center-shift {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin wh($size) {
+  width:  $size;
+  height: $size;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #333;
+  /*background: linear-gradient(30deg, #111, #444);
+  background: linear-gradient(#111, #444);*/
+  color: #ddd;
+  a {
+    color: #88f;
+    &:visited {
+      color: #c8f;
+    }
+    &:active {
+      color: #f44;
+    }
+    &:hover {
+      color: #f88;
+    }
+  }
+}
+
+#wrap {
+  /*border: 2px solid black;
+  border-radius: 50%;
+  clip-path: circle($center-size/2 at $center-size/2 $center-size/2);*/
+  @extend .center-shift;
+  @include wh($center-size);
+  .dot {
+    clip-path: circle(180px at 175px 175px);
+    background: #ddd;
+    @include wh(350px);
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, .5);
+    cursor: pointer;
+    font-size: 48px;
+    text-align: center;
+    color: rgba(0, 0, 0, .54);
+    transition: all .75s cubic-bezier(0, 0, .38, 1);
+    #svglogo {
+      position: absolute;
+      left: 0;
+      top: 0;
+      @include wh(350px);
+      transform: rotate(0deg);
+      transition: all 1.5s cubic-bezier(.18, .94, .26, .99);
+      .circle {
+        fill: $svglogo-col;
+        stroke: $svglogo-circle-stroke;
+        stroke-width: $svglogo-circle-stroke-width;
+      }
+      .ow {
+        fill: none;
+        stroke: $svglogo-ow-stroke;
+        stroke-width: $svglogo-ow-stroke-width;
+      }
+    }
+    .title {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      top: ( 350px - 100px) /2;
+      left: ( 350px - 100px) /2;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, .5);
+      font-size: 20px;
+      text-align: center;
+      line-height: 100px;
+      transition: all .75s cubic-bezier(0, 0, .38, 1);
+    }
+    &:hover .title {
+      color: black;
+      box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+      background-color: white;
+    }
+  }
+  .toolchest {
+    border: 0px solid transparent;
+    /*background-color: white;*/
+    position: absolute;
+    left: 0;
+    top: 0;
+    @include wh($center-size);
+    .tool {
+      position: absolute;
+      left: 0;
+      top: 0;
+      @include wh($center-size);
+      transform-origin: 50% 50%;
+      p {
+        position: absolute;
+        left: $center-size/2 - 100px/2;
+        top: 120px;
+        @include wh(100px);
+        border-radius: 50%;
+        text-align: center;
+        line-height: 100px;
+        background-color: rgba(#ddd, .7);
+        color: black;
+        transition: top .75s cubic-bezier(0, .62, .38, 1);
+        span {
+          display: block;
+        }
+        &::after {
+          content: " ";
+          position: absolute;
+          top: 100%;
+          left: 50%;
+          margin-left: -5px;
+          border-width: 5px;
+          border-style: solid;
+          border-color: rgba(#ddd, .7) transparent transparent transparent;
+        }
+      }
+      @for $index from 0 to $num-items {
+        &:nth-child(#{$index + 1}) {
+          transform: rotate(360deg / $num-items * $index);
+          p span {
+            transform: rotate(-360deg / $num-items * $index);
+          }
+        }
+      }
+    }
+  }
+  .plate {
+    position: absolute;
+    background-color: #333;
+    border: 1px solid #800;
+    border-radius: 50%;
+    left: ($center-size - $wedge-size)/2;
+    top: ($center-size - $wedge-size)/2;
+    @include wh($wedge-size);
+  }
+  .wedge {
+    opacity: 0;
+    transition: all .75s cubic-bezier(0, .62, .38, 1);
+    border: 0px solid transparent;
+    /*background-color: #333;*/
+    position: absolute;
+    left: ($center-size - $wedge-size)/2;
+    top: ($center-size - $wedge-size)/2;
+    @include wh($wedge-size);
+    clip-path: polygon((50% - 50% * tan(180deg/9)) 0, 50% 50%, (50% + 50% * tan(180deg/9)) 0);
+    transform-origin: $wedge-size/2 $wedge-size/2;
+    transform: rotate(0);
+    svg {
+      position: absolute;
+      left: 0;
+      top: 0;
+      @include wh($wedge-size);
+    }
+    i {
+      color: #fff;
+      position: absolute;
+      opacity: .8;
+      font-size: 42px;
+      left: 0;
+      top: 25px;
+      width: 100%;
+      text-align: center;
+    }
+    @for $index from 0 to $num-items {
+      &:nth-child(#{$index + 4}) {
+        svg path {
+          fill: nth($colors-0,$index+1);
+          stroke: nth($colors-1,$index+1);
+        }
+        &:hover {
+          svg path {
+            fill: nth($colors-4,$index+1);
+          }
+        }
+      }
+    }
+    &:hover {
+      i {
+        opacity: 1;
+      }
+    }
+  }
+  input {
+    display: none;
+    &:checked ~ .wedge {
+      opacity: 1;
+      @for $index from 0 to $num-items {
+        &:nth-child(#{$index + 4}) {
+          transform: rotate(360deg / $num-items * $index);
+          i {
+            transform: rotate(-360deg / $num-items * $index);
+          }
+        }
+      }
+    }
+    &:checked ~ .dot {
+      #svglogo {
+        transform: rotate(720deg);
+      }
+    }
+  }
+}

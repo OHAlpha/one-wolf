@@ -1,0 +1,28 @@
+$ rails g controller Navigation home about contact links join
+Running via Spring preloader in process 5445
+Expected string default value for '--jbuilder'; got true (boolean)
+Expected string default value for '--helper'; got true (boolean)
+Expected string default value for '--assets'; got true (boolean)
+      create  app/controllers/navigation_controller.rb
+       route  get 'navigation/join'
+       route  get 'navigation/links'
+       route  get 'navigation/contact'
+       route  get 'navigation/about'
+       route  get 'navigation/home'
+      invoke  erb
+      create    app/views/navigation
+      create    app/views/navigation/home.html.erb
+      create    app/views/navigation/about.html.erb
+      create    app/views/navigation/contact.html.erb
+      create    app/views/navigation/links.html.erb
+      create    app/views/navigation/join.html.erb
+      invoke  test_unit
+      create    test/controllers/navigation_controller_test.rb
+      invoke  helper
+      create    app/helpers/navigation_helper.rb
+      invoke    test_unit
+      invoke  assets
+      invoke    coffee
+      create      app/assets/javascripts/navigation.coffee
+      invoke    scss
+      create      app/assets/stylesheets/navigation.scss
