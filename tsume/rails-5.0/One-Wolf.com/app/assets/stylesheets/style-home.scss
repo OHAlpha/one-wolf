@@ -1,0 +1,208 @@
+@import 'trig';
+@import 'rainbow-palette';
+@import 'rainbow-classes';
+@import 'mixin';
+@import 'data-home';
+
+body {
+  color: #ddd;
+  a {
+    color: #88f;
+    &:visited {
+      color: #c8f;
+    }
+    &:active {
+      color: #f44;
+    }
+    &:hover {
+      color: #f88;
+    }
+  }
+}
+
+#wrap {
+  /*border: 2px solid black;
+  border-radius: 50%;
+  clip-path: circle($center-size/2 at $center-size/2 $center-size/2);*/
+  @extend .center-shift;
+  @include wh($center-size);
+  .dot {
+    clip-path: circle(180px at 175px 175px);
+    //background: #ddd;
+    @include wh(350px);
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, .5);
+    cursor: pointer;
+    font-size: 48px;
+    text-align: center;
+    color: rgba(0, 0, 0, .54);
+    transition: all .75s cubic-bezier(0, 0, .38, 1);
+    #svglogo {
+      position: absolute;
+      left: 0;
+      top: 0;
+      @include wh(350px);
+      transform: rotate(0deg);
+      transition: all 1.5s cubic-bezier(.18, .94, .26, .99);
+      .circle {
+        fill: rgba($svglogo-col,.6);
+        stroke: $svglogo-circle-stroke;
+        stroke-width: $svglogo-circle-stroke-width;
+      }
+      .ow {
+        fill: none;
+        stroke: $svglogo-ow-stroke;
+        stroke-width: $svglogo-ow-stroke-width;
+      }
+    }
+    .title {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      top: ( 350px - 100px) /2;
+      left: ( 350px - 100px) /2;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, .5);
+      font-size: 20px;
+      text-align: center;
+      line-height: 100px;
+      transition: all .75s cubic-bezier(0, 0, .38, 1);
+    }
+    &:hover .title {
+      color: black;
+      box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+      background-color: white;
+      text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.7);
+    }
+  }
+  .toolchest {
+    border: 0px solid transparent;
+    /*background-color: white;*/
+    position: absolute;
+    left: 0;
+    top: 0;
+    @include wh($center-size);
+    .tool {
+      position: absolute;
+      left: 0;
+      top: 0;
+      @include wh($center-size);
+      transform-origin: 50% 50%;
+      p {
+        position: absolute;
+        left: $center-size/2 - 100px/2;
+        top: 120px;
+        @include wh(100px);
+        border-radius: 50%;
+        text-align: center;
+        line-height: 100px;
+        background-color: rgba(#ddd, .7);
+        color: black;
+        transition: all .75s cubic-bezier(0, .62, .38, 1);
+        opacity: 0;
+        span {
+          display: block;
+        }
+        &::after {
+          content: " ";
+          position: absolute;
+          top: 100%;
+          left: 50%;
+          margin-left: -5px;
+          border-width: 5px;
+          border-style: solid;
+          border-color: rgba(#ddd, .7) transparent transparent transparent;
+        }
+      }
+      @for $index from 0 to $num-items {
+        &:nth-child(#{$index + 1}) {
+          transform: rotate(360deg / $num-items * $index);
+          p span {
+            transform: rotate(-360deg / $num-items * $index);
+          }
+        }
+      }
+    }
+  }
+  .plate {
+    position: absolute;
+    //background-color: rgba(#333,.5);
+    //background-color: radial-gradient(50% 50%, ellipse, rgba(#333, .5), rgba(#333, 0) 70%);
+    //border: 1px solid #800;
+    border-radius: 50%;
+    left: ($center-size - $wedge-size)/2;
+    top: ($center-size - $wedge-size)/2;
+    @include wh($wedge-size);
+  }
+  .wedge {
+    opacity: 0;
+    transition: all .75s cubic-bezier(0, .62, .38, 1);
+    border: 0px solid transparent;
+    /*background-color: #333;*/
+    position: absolute;
+    left: ($center-size - $wedge-size)/2;
+    top: ($center-size - $wedge-size)/2;
+    @include wh($wedge-size);
+    clip-path: polygon((50% - 50% * tan(180deg/9)) 0, 50% 50%, (50% + 50% * tan(180deg/9)) 0);
+    transform-origin: $wedge-size/2 $wedge-size/2;
+    transform: rotate(0);
+    svg {
+      position: absolute;
+      left: 0;
+      top: 0;
+      @include wh($wedge-size);
+    }
+    i {
+      color: #fff;
+      position: absolute;
+      opacity: .8;
+      font-size: 42px;
+      left: 0;
+      top: 25px;
+      width: 100%;
+      text-align: center;
+    }
+    @for $index from 0 to $num-items {
+      &:nth-child(#{$index + 4}) {
+        svg path {
+          fill: nth($colors-0,$index+1);
+          stroke: nth($colors-1,$index+1);
+        }
+        &:hover {
+          svg path {
+            fill: nth($colors-4,$index+1);
+          }
+        }
+      }
+    }
+    &:hover {
+      i {
+        opacity: 1;
+      }
+    }
+  }
+  input {
+    display: none;
+    &:checked ~ .wedge {
+      opacity: 1;
+      @for $index from 0 to $num-items {
+        &:nth-child(#{$index + 4}) {
+          transform: rotate(360deg / $num-items * $index);
+          i {
+            transform: rotate(-360deg / $num-items * $index);
+          }
+        }
+      }
+    }
+    &:checked ~ .dot {
+      #svglogo {
+        transform: rotate(720deg);
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+$center-size: 710px;
+$wedge-size: 500px;
+$num-items: 9;
+$piece-opacity: .6;
+$colors-0: rgba($theme-col-alpha-0, $piece-opacity),
+rgba($theme-col-beta-0, $piece-opacity),
+rgba($theme-col-gamma-0, $piece-opacity),
+rgba($theme-col-delta-0, $piece-opacity),
+rgba($theme-col-epsilon-0, $piece-opacity),
+rgba($theme-col-zeta-0, $piece-opacity),
+rgba($theme-col-eta-0, $piece-opacity),
+rgba($theme-col-theta-0, $piece-opacity),
+rgba($theme-col-iota-0, $piece-opacity);
+$colors-1: rgba($theme-col-alpha-1, $piece-opacity),
+rgba($theme-col-beta-1, $piece-opacity),
+rgba($theme-col-gamma-1, $piece-opacity),
+rgba($theme-col-delta-1, $piece-opacity),
+rgba($theme-col-epsilon-1, $piece-opacity),
+rgba($theme-col-zeta-1, $piece-opacity),
+rgba($theme-col-eta-1, $piece-opacity),
+rgba($theme-col-theta-1, $piece-opacity),
+rgba($theme-col-iota-1, $piece-opacity);
+$colors-4: rgba($theme-col-alpha-4, $piece-opacity),
+rgba($theme-col-beta-4, $piece-opacity),
+rgba($theme-col-gamma-4, $piece-opacity),
+rgba($theme-col-delta-4, $piece-opacity),
+rgba($theme-col-epsilon-4, $piece-opacity),
+rgba($theme-col-zeta-4, $piece-opacity),
+rgba($theme-col-eta-4, $piece-opacity),
+rgba($theme-col-theta-4, $piece-opacity),
+rgba($theme-col-iota-4, $piece-opacity);
+$svglogo-col: rgba(0, 0, 0, .8);
+$svglogo-circle-stroke: #ffffff;
+$svglogo-ow-stroke: #ffffff;
+$svglogo-circle-stroke-width: 3;
+$svglogo-ow-stroke-width: 3;
