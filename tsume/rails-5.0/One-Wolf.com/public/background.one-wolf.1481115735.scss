@@ -1,0 +1,17 @@
+@import 'rainbow-palette.one-wolf';
+
+html {
+  width: 100%;
+  height:100%;
+  overflow:hidden;
+}
+
+body {
+  width: 100%;
+  height:100%;
+  background: #333;
+  $gradient-a: linear-gradient(to top, rgba($rgba-delta-3,.5) 10%,rgba(#333, 0) 60%);
+  $gradient-b: radial-gradient(100% 40%, ellipse, rgba($rgba-alpha-2,.5), rgba(#333, 0) 70%);
+  $gradient-c: radial-gradient(0% 0%, ellipse, rgba($rgba-beta-4,.7), rgba(#333, 0));
+  background: $gradient-a, $gradient-b, $gradient-c, black;
+}

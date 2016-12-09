@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
   
+  get 'navigation/news'
+
+  get 'navigation/gallery'
+
+  get 'navigation/games'
+
+  get 'navigation/subscribe'
+
+  get 'navigation/comming_soon'
+
   root 'navigation#home'
   get '/home', to: 'navigation#home'
   get '/about', to: 'navigation#about'
