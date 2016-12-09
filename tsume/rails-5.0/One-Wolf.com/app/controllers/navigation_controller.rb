@@ -9,12 +9,35 @@ class NavigationController < ApplicationController
   end
 
   def contact
+    render :comming_soon
   end
 
   def links
+    render :comming_soon
   end
 
   def join
+    render :comming_soon
+  end
+
+  def news
+    render :comming_soon
+  end
+
+  def gallery
+    render :comming_soon
+  end
+
+  def games
+    render :comming_soon
+  end
+
+  def subscribe
+    render :comming_soon
+  end
+  
+
+  def comming_soon
   end
   
   private

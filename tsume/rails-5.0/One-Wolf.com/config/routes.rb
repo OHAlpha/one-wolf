@@ -1,14 +1,4 @@
 Rails.application.routes.draw do
-  
-  get 'navigation/news'
-
-  get 'navigation/gallery'
-
-  get 'navigation/games'
-
-  get 'navigation/subscribe'
-
-  get 'navigation/comming_soon'
 
   root 'navigation#home'
   get '/home', to: 'navigation#home'
@@ -16,6 +6,10 @@ Rails.application.routes.draw do
   get '/contact', to: 'navigation#contact'
   get '/links', to: 'navigation#links'
   get '/join', to: 'navigation#join'
+  get '/news', to: 'navigation#news'
+  get '/gallery', to: 'navigation#gallery'
+  get '/games', to: 'navigation#games'
+  get '/subscribe', to: 'navigation#subscribe'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
