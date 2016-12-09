@@ -21,14 +21,10 @@ body {
 }
 
 #wrap {
-  /*border: 2px solid black;
-  border-radius: 50%;
-  clip-path: circle($center-size/2 at $center-size/2 $center-size/2);*/
   @extend .center-shift;
   @include wh($center-size);
   .dot {
-    clip-path: circle(180px at 175px 175px);
-    //background: #ddd;
+    pointer-events: none;
     @include wh(350px);
     display: block;
     position: absolute;
@@ -43,6 +39,7 @@ body {
     color: rgba(0, 0, 0, .54);
     transition: all .75s cubic-bezier(0, 0, .38, 1);
     #svglogo {
+      position: none;
       position: absolute;
       left: 0;
       top: 0;
@@ -50,11 +47,13 @@ body {
       transform: rotate(0deg);
       transition: all 1.5s cubic-bezier(.18, .94, .26, .99);
       .circle {
+        pointer-events: visible;
         fill: rgba($svglogo-col,.6);
         stroke: $svglogo-circle-stroke;
         stroke-width: $svglogo-circle-stroke-width;
       }
       .ow {
+        pointer-events: visible;
         fill: none;
         stroke: $svglogo-ow-stroke;
         stroke-width: $svglogo-ow-stroke-width;
@@ -82,7 +81,6 @@ body {
   }
   .toolchest {
     border: 0px solid transparent;
-    /*background-color: white;*/
     position: absolute;
     left: 0;
     top: 0;
@@ -131,24 +129,20 @@ body {
   }
   .plate {
     position: absolute;
-    //background-color: rgba(#333,.5);
-    //background-color: radial-gradient(50% 50%, ellipse, rgba(#333, .5), rgba(#333, 0) 70%);
-    //border: 1px solid #800;
     border-radius: 50%;
     left: ($center-size - $wedge-size)/2;
     top: ($center-size - $wedge-size)/2;
     @include wh($wedge-size);
   }
   .wedge {
+    pointer-events: none;
     opacity: 0;
     transition: all .75s cubic-bezier(0, .62, .38, 1);
     border: 0px solid transparent;
-    /*background-color: #333;*/
     position: absolute;
     left: ($center-size - $wedge-size)/2;
     top: ($center-size - $wedge-size)/2;
     @include wh($wedge-size);
-    clip-path: polygon((50% - 50% * tan(180deg/9)) 0, 50% 50%, (50% + 50% * tan(180deg/9)) 0);
     transform-origin: $wedge-size/2 $wedge-size/2;
     transform: rotate(0);
     svg {
@@ -156,6 +150,9 @@ body {
       left: 0;
       top: 0;
       @include wh($wedge-size);
+      path {
+        pointer-events: visible;
+      }
     }
     i {
       color: #fff;
