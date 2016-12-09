@@ -4,22 +4,6 @@
 @import 'mixin';
 @import 'data-home';
 
-body {
-  color: #ddd;
-  a {
-    color: #88f;
-    &:visited {
-      color: #c8f;
-    }
-    &:active {
-      color: #f44;
-    }
-    &:hover {
-      color: #f88;
-    }
-  }
-}
-
 #wrap {
   @extend .center-shift;
   @include wh($center-size);
