@@ -13,4 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
+//= require kmewhort-pep/pointer_events_polyfill
+//= require_self
+
+$(function(){
+  PointerEventsPolyfill.initialize({});
+});

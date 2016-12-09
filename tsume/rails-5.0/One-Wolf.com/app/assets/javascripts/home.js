@@ -10,11 +10,9 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
-//= require jquery_ujs
-//= require turbolinks
 //= require_self
 
+/*
 function pij() {
   return 3.14159265359;
 }
@@ -66,11 +64,12 @@ function cosj(angle) {
 function tanj(angle) {
   return sinj(angle) / cosj(angle);
 }
+*/
 
 function rotj(p, angle) {
   return [
-    p[0] * cosj(angle) - p[1] * sinj(angle),
-    p[0] * sinj(angle) + p[1] * cosj(angle)
+    p[0] * Math.cos(angle) - p[1] * Math.sin(angle),
+    p[0] * Math.sin(angle) + p[1] * Math.cos(angle)
   ];
 }
 
@@ -90,12 +89,12 @@ function b_to(c, s, t, p, angle) {
 function arc_points(c, s, theta, phi) {
   var ps = [
     [
-      -sinj(theta),
-      cosj(theta)
+      -Math.sin(theta),
+      Math.cos(theta)
     ],
     [
-      ((cosj(theta) - 1) * (3 - cosj(theta))) / (3 * sinj(theta)),
-      (4 - cosj(theta)) / 3
+      ((Math.cos(theta) - 1) * (3 - Math.cos(theta))) / (3 * Math.sin(theta)),
+      (4 - Math.cos(theta)) / 3
     ]
   ];
   return [
@@ -107,7 +106,7 @@ function arc_points(c, s, theta, phi) {
 }
 
 function arc_to(c, s, theta, phi) {
-  psr = arc_points(c,s,theta,phi);
+  var psr = arc_points(c,s,theta,phi);
   return 'C' + (c[0] + s[0] * psr[1][0]) + ',' + (c[1] - s[1] * psr[1][1]) + 
     ' ' + (c[0] + s[0] * psr[2][0]) + ',' + (c[1] - s[1] * psr[2][1]) + 
     ' ' + (c[0] + s[0] * psr[3][0]) + ',' + (c[1] - s[1] * psr[3][1]);
@@ -155,7 +154,7 @@ for (var i = 0; i < items.length; i++) {
   var tid = "#tool-"+item['id']+" p";
   var fill = item['fill'];
   var stroke = item['stroke'];
-  var wedge = $(id);
+  //var wedge = $(id);
   /*
   wedge.hover(function() {
     $(tid).css('top','0');
@@ -167,10 +166,10 @@ for (var i = 0; i < items.length; i++) {
   */
   var svg = Snap(wid);
   var v = 0;
-  var c1 = b_to(c, s1, 'M', [0,1], radj((v+.5-tol)*360/n));
-  var c2 = b_to(c, s2, 'L', [0,1], radj((v-.5+tol)*360/n));
-  var a1 = arc_to(c, s1, radj((1-2*tol)*180/n), radj(v*360/n));
-  var a2 = arc_to(c, s2, radj(-(1-2*tol)*180/n), radj(v*360/n));
+  var c1 = b_to(c, s1, 'M', [0,1], ((v+.5-tol)*2*Math.PI/n));
+  var c2 = b_to(c, s2, 'L', [0,1], ((v-.5+tol)*2*Math.PI/n));
+  var a1 = arc_to(c, s1, ((1-2*tol)*Math.PI/n), (v*2*Math.PI/n));
+  var a2 = arc_to(c, s2, (-(1-2*tol)*Math.PI/n), (v*2*Math.PI/n));
   var path = c1+' '+a1+' '+c2+' '+a2 + ' Z';
   //console.log(path);
   //svg.circle(200,200,100);

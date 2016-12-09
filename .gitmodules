@@ -1,0 +1,3 @@
+[submodule "pep-km"]
+	path = tsume/rails-5.0/One-Wolf.com/vendor/assets/javascripts/kmewhort-pep
+	url = https://github.com/kmewhort/pointer_events_polyfill.git
