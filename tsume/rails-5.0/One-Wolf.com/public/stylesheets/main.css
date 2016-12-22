@@ -1,0 +1,43 @@
+/* line 3, /home/ubuntu/rails-apps/OHAlpha/one-wolf/tsume/rails-5.0/One-Wolf.com/app/assets/stylesheets/background-main.scss */
+html {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* line 9, /home/ubuntu/rails-apps/OHAlpha/one-wolf/tsume/rails-5.0/One-Wolf.com/app/assets/stylesheets/background-main.scss */
+body {
+  width: 100%;
+  height: 100%;
+  background: #333;
+  background: -webkit-linear-gradient(bottom, rgba(75, 56, 88, 0.5) 10%, rgba(51, 51, 51, 0) 60%), -webkit-radial-gradient(100% 40%, ellipse, rgba(202, 176, 158, 0.5), rgba(51, 51, 51, 0) 70%), -webkit-radial-gradient(0% 0%, ellipse, rgba(103, 46, 46, 0.7), rgba(51, 51, 51, 0)), black;
+  background: linear-gradient(to top, rgba(75, 56, 88, 0.5) 10%, rgba(51, 51, 51, 0) 60%), radial-gradient(ellipse at 100% 40%, rgba(202, 176, 158, 0.5), rgba(51, 51, 51, 0) 70%), radial-gradient(ellipse at 0% 0%, rgba(103, 46, 46, 0.7), rgba(51, 51, 51, 0)), black;
+}
+
+/* line 4, /home/ubuntu/rails-apps/OHAlpha/one-wolf/tsume/rails-5.0/One-Wolf.com/app/assets/stylesheets/main.scss */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* line 10, /home/ubuntu/rails-apps/OHAlpha/one-wolf/tsume/rails-5.0/One-Wolf.com/app/assets/stylesheets/main.scss */
+body {
+  color: #ddd;
+}
+/* line 12, /home/ubuntu/rails-apps/OHAlpha/one-wolf/tsume/rails-5.0/One-Wolf.com/app/assets/stylesheets/main.scss */
+body a {
+  color: #88f;
+}
+/* line 14, /home/ubuntu/rails-apps/OHAlpha/one-wolf/tsume/rails-5.0/One-Wolf.com/app/assets/stylesheets/main.scss */
+body a:visited {
+  color: #c8f;
+}
+/* line 17, /home/ubuntu/rails-apps/OHAlpha/one-wolf/tsume/rails-5.0/One-Wolf.com/app/assets/stylesheets/main.scss */
+body a:active {
+  color: #f44;
+}
+/* line 20, /home/ubuntu/rails-apps/OHAlpha/one-wolf/tsume/rails-5.0/One-Wolf.com/app/assets/stylesheets/main.scss */
+body a:hover {
+  color: #f88;
+}
