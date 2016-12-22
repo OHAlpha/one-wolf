@@ -1,16 +1,18 @@
-- var items = [{id:'home',class:'home',url:'/',tool:'Home'},{id:'about',class:'info',url:'/about',tool:'About Me'},{id:'contact',class:'envelope',url:'/contact',tool:'Contact'},{id:'news',class:'newspaper-o',url:'/news',tool:'News'},{id:'gallery',class:'image',url:'/gallery',tool:'Gallery'},{id:'games',class:'gamepad',url:'/games',tool:'Games'},{id:'links',class:'link',url:'/links',tool:'Links'},{id:'subscribe',class:'rss',url:'/subscribe',tool:'Subscribe'},{id:'account',class:'user',url:'/join',tool:'Sign Up'}]
 #wrap
   input#toggle(type='checkbox')
   .toolchest
     each item in items
-      .tool(id="tool-#{item['id']}")
+      - var id = item['id']
+      .tool(id='tool-' +id)
         p
           span= item['tool']
   .plate
   each item in items
-    a.wedge(id="wedge-#{item['id']}",href="#{item['url']}",onmouseover="if( $('#wrap input').is(':checked') ) $('#tool-#{item['id']} p').css('top','0')",onmouseout="if( $('#wrap input').is(':checked') ) $('#tool-#{item['id']} p').css('top','120px')")
+    - var id = item['id']
+    - var clazz = item['class']
+    a.wedge(id='wedge-' + id,href=id,onmouseover="if( $('#wrap input').is(':checked') ) $('#tool-"+id+" p').css({'top':0,'opacity':1})",onmouseout="if( $('#wrap input').is(':checked') ) $('#tool-"+id+" p').css({'top':'120px','opacity':0})")
       svg
-      i(class="fa fa-#{item['class']}")
+      i(class="fa fa-"+clazz)
   label.dot(for='toggle')
     svg#svglogo( xmlns='http://www.w3.org/2000/svg', version='1.1', pagealignment='none', x='0', y='0', width='353.55339', height='353.55339', viewbox='0 0 500 500', enable-background='new 0 0 353.55339 353.55339', xml:space='preserve', bodybackgroundcolor='rgba(255,0,0,0)')
       rect(x='0', y='0', width='500', height='500', fill='none')
