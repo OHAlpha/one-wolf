@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get '/test1', to: 'navigation#test1'
+  get '/test2', to: 'navigation#test2'
 
   root 'navigation#home'
   get '/home', to: 'navigation#home'

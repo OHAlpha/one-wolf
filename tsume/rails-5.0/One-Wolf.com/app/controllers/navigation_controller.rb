@@ -46,6 +46,8 @@ class NavigationController < ApplicationController
     case action_name
     when "home"
       "home"
+    when "test1", "test2"
+      "test"
     else
       "application"
     end

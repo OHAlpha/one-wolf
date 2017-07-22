@@ -1,0 +1,472 @@
+$theme-col-alpha-0: rgba(167, 136, 116, 1);
+$theme-col-alpha-1: rgba(246, 228, 216, 1);
+$theme-col-alpha-2: rgba(202, 176, 158, 1);
+$theme-col-alpha-3: rgba(131, 101, 81, 1);
+$theme-col-alpha-4: rgba(103, 69, 46, 1);
+$theme-col-beta-0: rgba(167, 116, 116, 1);
+$theme-col-beta-1: rgba(246, 216, 216, 1);
+$theme-col-beta-2: rgba(202, 158, 158, 1);
+$theme-col-beta-4: rgba(103, 46, 46, 1);
+$theme-col-beta-3: rgba(131, 81, 81, 1);
+$theme-col-gamma-0: rgba(139, 96, 117, 1);
+$theme-col-gamma-1: rgba(205, 180, 192, 1);
+$theme-col-gamma-2: rgba(168, 132, 149, 1);
+$theme-col-gamma-3: rgba(109, 68, 87, 1);
+$theme-col-gamma-4: rgba( 86, 38, 61, 1);
+$theme-col-delta-0: rgba( 99, 79, 112, 1);
+$theme-col-delta-1: rgba(157, 145, 164, 1);
+$theme-col-delta-2: rgba(124, 108, 135, 1);
+$theme-col-delta-3: rgba( 75, 56, 88, 1);
+$theme-col-delta-4: rgba( 55, 33, 69, 1);
+$theme-col-epsilon-0: rgba( 85, 87, 116, 1);
+$theme-col-epsilon-1: rgba(153, 154, 171, 1);
+$theme-col-epsilon-2: rgba(114, 116, 140, 1);
+$theme-col-epsilon-3: rgba( 61, 63, 91, 1);
+$theme-col-epsilon-4: rgba( 38, 39, 71, 1);
+$theme-col-zeta-0: rgba( 72, 104, 100, 1);
+$theme-col-zeta-1: rgba(134, 153, 151, 1);
+$theme-col-zeta-2: rgba( 98, 125, 122, 1);
+$theme-col-zeta-3: rgba( 50, 81, 78, 1);
+$theme-col-zeta-4: rgba( 29, 64, 60, 1);
+$theme-col-eta-0: rgba(112, 143, 99, 1);
+$theme-col-eta-1: rgba(193, 211, 185, 1);
+$theme-col-eta-2: rgba(147, 173, 136, 1);
+$theme-col-eta-3: rgba( 82, 113, 70, 1);
+$theme-col-eta-4: rgba( 54, 88, 39, 1);
+$theme-col-theta-0: rgba(146, 158, 110, 1);
+$theme-col-theta-1: rgba(226, 233, 205, 1);
+$theme-col-theta-2: rgba(181, 191, 150, 1);
+$theme-col-theta-3: rgba(112, 124, 77, 1);
+$theme-col-theta-4: rgba( 84, 97, 44, 1);
+$theme-col-iota-0: rgba(167, 165, 116, 1);
+$theme-col-iota-1: rgba(246, 244, 216, 1);
+$theme-col-iota-2: rgba(202, 200, 158, 1);
+$theme-col-iota-3: rgba(131, 129, 81, 1);
+$theme-col-iota-4: rgba(103, 101, 46, 1);
+@mixin pos-lt($position) {
+  left: $position;
+  top: $position;
+}
+
+@mixin pos-rt($position) {
+  right: $position;
+  top: $position;
+}
+
+@mixin pos-lb($position) {
+  left: $position;
+  bottom: $position;
+}
+
+@mixin pos-rb($position) {
+  right: $position;
+  bottom: $position;
+}
+
+@mixin pos-alt($position) {
+  position: absolute;
+  @include pos-lt($position);
+}
+
+@mixin pos-art($position) {
+  position: absolute;
+  @include pos-rt($position);
+}
+
+@mixin pos-alb($position) {
+  position: absolute;
+  @include pos-lb($position);
+}
+
+@mixin pos-arb($position) {
+  position: absolute;
+  @include pos-rb($position);
+}
+
+.alt0 {
+  @include pos-alt(0);
+}
+
+.center-shift {
+  @include pos-alt(50%);
+  transform: translate(-50%, -50%);
+}
+
+@mixin size-wh($size) {
+  width: $size;
+  height: $size;
+}
+
+.full-size {
+  @include size-wh(100%);
+}
+
+.full-stack {
+  @include pos-alt(0);
+  @include size-wh(100%);
+}
+
+@mixin rect($position, $size) {
+  @include pos-lt($position);
+  @include size-wh($size);
+}
+
+@mixin circlip($diameter) {
+  @include size-wh($diameter);
+  $radius: $diameter / 2;
+  clip-path: circle($radius at $radius $radius);
+  overflow: hidden;
+}
+
+@mixin circlira($diameter) {
+  @include circlip($diameter);
+  border-radius: 50%;
+}
+
+.no-spacing {
+  margin: 0;
+  padding: 0;
+}
+
+$center-size: 750px;
+$center-background: transparent;
+$center-border: 0;
+$center-border-col: transparent;
+$wedge-size: 500px;
+$wedge-background: transparent;
+$wedge-border: $center-border;
+$wedge-border-col: $center-border-col;
+$dot-size: 350px;
+$dot-background: transparent;
+$dot-border: $center-border;
+$dot-border-col: transparent;
+$icon-size: 45px;
+$icon-top: 25px;
+$icon-col: rgba(white, .6);
+$icon-hover-col: white;
+$title-size: 100px;
+$title-background: rgba(255, 255, 255, .5);
+$title-border: 0;
+$title-border-col: transparent;
+$title-font-size: 20px;
+$title-font-col: #333;
+$title-hover-font-col: black;
+$svglogo-col: rgba(0, 0, 0, .8);
+$svglogo-circle-stroke: #ffffff;
+$svglogo-ow-stroke: #ffffff;
+$svglogo-circle-stroke-width: 3px;
+$svglogo-ow-stroke-width: 3px;
+$num: 9;
+$piece-opacity: .6;
+$colors-0: rgba($theme-col-alpha-0, $piece-opacity),
+rgba($theme-col-beta-0, $piece-opacity),
+rgba($theme-col-gamma-0, $piece-opacity),
+rgba($theme-col-delta-0, $piece-opacity),
+rgba($theme-col-epsilon-0, $piece-opacity),
+rgba($theme-col-zeta-0, $piece-opacity),
+rgba($theme-col-eta-0, $piece-opacity),
+rgba($theme-col-theta-0, $piece-opacity),
+rgba($theme-col-iota-0, $piece-opacity);
+$colors-1: rgba($theme-col-alpha-1, $piece-opacity),
+rgba($theme-col-beta-1, $piece-opacity),
+rgba($theme-col-gamma-1, $piece-opacity),
+rgba($theme-col-delta-1, $piece-opacity),
+rgba($theme-col-epsilon-1, $piece-opacity),
+rgba($theme-col-zeta-1, $piece-opacity),
+rgba($theme-col-eta-1, $piece-opacity),
+rgba($theme-col-theta-1, $piece-opacity),
+rgba($theme-col-iota-1, $piece-opacity);
+$colors-4: rgba($theme-col-alpha-4, $piece-opacity),
+rgba($theme-col-beta-4, $piece-opacity),
+rgba($theme-col-gamma-4, $piece-opacity),
+rgba($theme-col-delta-4, $piece-opacity),
+rgba($theme-col-epsilon-4, $piece-opacity),
+rgba($theme-col-zeta-4, $piece-opacity),
+rgba($theme-col-eta-4, $piece-opacity),
+rgba($theme-col-theta-4, $piece-opacity),
+rgba($theme-col-iota-4, $piece-opacity);
+$item-names: 'home' 'about' 'contact' 'news' 'gallery' 'games' 'links' 'subscribe' 'account';
+* {
+  box-sizing: content-box;
+}
+
+html {
+  @extend .full-size;
+  @extend .no-spacing;
+}
+
+body {
+  @extend .full-size;
+  @extend .no-spacing;
+  /*
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: #333;
+  */
+  $gradient-a: linear-gradient(to top, rgba($theme-col-delta-3,.5) 10%,rgba(#333, 0) 60%);
+  $gradient-b: radial-gradient(100% 40%, ellipse, rgba($theme-col-alpha-2,.5), rgba(#333, 0) 70%);
+  $gradient-c: radial-gradient(0% 0%, ellipse, rgba($theme-col-beta-4,.7), rgba(#333, 0));
+  $gradient-b: radial-gradient(ellipse at 100% 40%, rgba($theme-col-alpha-2,.5), rgba(#333, 0) 70%);
+  $gradient-c: radial-gradient(ellipse at 0% 0%, rgba($theme-col-beta-4,.7), rgba(#333, 0));
+  background: $gradient-a, $gradient-b, $gradient-c, black;
+}
+
+.roundmenu {
+  position: absolute;
+  background: $center-background;
+  border: $center-border solid $center-border-col;
+  border-radius: 50%;
+  //@extend .crosshair;
+  @extend .no-spacing;
+  &.centermenu {
+    @include pos-lt(50%);
+    @include size-wh($center-size);
+    transform: translate(-50%, -50%);
+    .wedge {
+      @include pos-lt(($center-size - $wedge-size)/2 - $center-border);
+    }
+    .dot {
+      @include pos-lt(($center-size - $dot-size)/2 - $center-border);
+    }
+  }
+  &.cornermenu {
+    @include size-wh($wedge-size + $center-border);
+    &.northwest {
+      @include pos-lt(50px);
+    }
+    .wedge {
+      @include pos-lt(($wedge-size + $center-border - $wedge-size)/2 - $center-border);
+      .tool {
+        display: none;
+      }
+    }
+    .dot {
+      @include pos-lt(($wedge-size + $center-border - $dot-size)/2 - $center-border);
+    }
+  }
+  .menutoggle {
+    display: none;
+    &:checked {
+      & ~ .wedge {
+        opacity: 1;
+        i {
+          opacity: 1;
+        }
+        @for $i from 0 to $num {
+          &#wedge-#{nth($item-names,$i+1)} {
+            transform: rotate(360deg/$num*$i);
+            i {}
+          }
+        }
+      }
+      & ~ .dot {
+        .svglogo {
+          transform: rotate(720deg);
+        }
+      }
+    }
+  }
+  .wedge {
+    //@extend .compass;
+    background: $wedge-background;
+    border: $wedge-border solid $wedge-border-col;
+    border-radius: 50%;
+    pointer-events: none;
+    position: absolute;
+    @include size-wh($wedge-size);
+    opacity: 0;
+    transform: rotate(0);
+    transition: all .75s cubic-bezier(0, 0, .38, 1);
+    .tool {
+      //pointer-events: visible;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      $tool-size: 20px;
+      position: absolute;
+      left: ($wedge-size - $tool-size)/2;
+      top: 42.5px - $tool-size/2;
+      @include size-wh($tool-size);
+      border-radius: 50%;
+      background: rgba(white, .8);
+      opacity: 0;
+      transition: inherit;
+      cursor: default;
+      .tip {
+        //pointer-events: visible;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        transition: inherit;
+        p {
+          transform: scale(.01);
+          transition: inherit;
+        }
+      }
+      &::after {
+        content: " ";
+        position: absolute;
+        top: 100%;
+        /* At the bottom of the tooltip */
+        left: 50%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: rgba(white, .6) transparent transparent transparent;
+      }
+    }
+    svg {
+      position: absolute;
+      @include pos-lt(0);
+      @extend .full-size;
+      transition: inherit;
+      path {
+        pointer-events: visible;
+        transition: inherit;
+      }
+    }
+    i {
+      //border: 1px solid white;
+      $t: 50px;
+      position: absolute;
+      left: ($wedge-size - $t)/2;
+      top: $icon-top;
+      width: $t;
+      text-align: center;
+      font-size: $icon-size;
+      opacity: 0;
+      transition: inherit;
+      color: $icon-col;
+    }
+    &:hover {
+      .tool {
+        $tool-size: 100px;
+        position: absolute;
+        left: ($wedge-size - $tool-size)/2;
+        top: -$tool-size - 25px;
+        @include size-wh($tool-size);
+        opacity: 1;
+        .tip p {
+          transform: scale(1);
+        }
+      }
+      i {
+        color: $icon-hover-col;
+      }
+    }
+    @for $i from 0 to $num {
+      &#wedge-#{nth($item-names,$i+1)} {
+        .tool .tip {
+          transform: rotate(-360deg/$num*$i);
+        }
+        svg path {
+          fill: nth($colors-0, $i+1);
+          stroke: nth($colors-1, $i+1);
+        }
+        i {
+          transform: rotate(-360deg/$num*$i);
+        }
+        &:hover {
+          svg path {
+            fill: nth($colors-4, $i+1);
+          }
+        }
+      }
+    }
+  }
+  .dot {
+    //@extend .crosshair;
+    pointer-events: none;
+    background: $dot-background;
+    border: $dot-border solid $dot-border-col;
+    border-radius: 50%;
+    position: absolute;
+    @include size-wh($dot-size);
+    .svglogo {
+      position: absolute;
+      @extend .full-stack;
+      transform: rotate(0deg);
+      transition: all 1.5s cubic-bezier(.18, .94, .26, .99);
+      .circle {
+        pointer-events: visible;
+        fill: rgba($svglogo-col, .6);
+        stroke: $svglogo-circle-stroke;
+        stroke-width: $svglogo-circle-stroke-width;
+      }
+      .ow {
+        pointer-events: visible;
+        fill: none;
+        stroke: $svglogo-ow-stroke;
+        stroke-width: $svglogo-ow-stroke-width;
+      }
+    }
+    .logocaption {
+      pointer-events: visible;
+      position: absolute;
+      @include pos-lt(($dot-size - $title-size)/2);
+      @include size-wh($title-size);
+      @extend .no-spacing;
+      background: $title-background;
+      border-radius: 50%;
+      font-size: $title-font-size;
+      line-height: $title-size;
+      text-align: center;
+      color: $title-font-col;
+      transition: all .75s cubic-bezier(0, 0, .38, 1);
+    }
+    &:hover {
+      .logocaption {
+        color: $title-hover-font-col;
+        box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+        background-color: white;
+        text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.7);
+      }
+    }
+  }
+}
+
+.crosshair {
+  &:before {
+    content: " ";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 1px;
+    height: 100%;
+    background: black;
+  }
+  &:after {
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    height: 1px;
+    background: black;
+  }
+}
+
+.compass {
+  &:before {
+    content: " ";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 1px;
+    height: 50%;
+    background: black;
+  }
+  &:after {
+    content: " ";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 10px;
+    height: 10px;
+    transform-origin: 0 0;
+    transform: rotate(45deg);
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+  }
+}

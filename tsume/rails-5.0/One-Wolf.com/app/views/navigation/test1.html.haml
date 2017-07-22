@@ -1,0 +1,16 @@
+- items = [{id:'home',class:'home',url:'/',tool:'Home'},{id:'about',class:'info',url:'/about',tool:'About Me'},{id:'contact',class:'envelope',url:'/contact',tool:'Contact'},{id:'news',class:'newspaper-o',url:'/news',tool:'News'},{id:'gallery',class:'image',url:'/gallery',tool:'Gallery'},{id:'games',class:'gamepad',url:'/games',tool:'Games'},{id:'links',class:'link',url:'/links',tool:'Links'},{id:'subscribe',class:'rss',url:'/subscribe',tool:'Subscribe'},{id:'account',class:'user',url:'/join',tool:'Sign Up'}]
+.roundmenu.centermenu
+  %input.menutoggle#mainmenutoggle{type: 'checkbox', name: 'mainmenutoggle'}
+  - items.each do |item|
+    - id = item[:id]
+    - clazz = item[:class]
+    %a.wedge{id: 'wedge-' + id, href: id}
+      - if not item[:tool].nil?
+        .tool.bottomarrow{id: "tool-#{id}"}
+          .tip
+            %p= item[:tool]
+      %svg{id: 'svg-' + id}
+      %i{class: "fa fa-"+clazz}
+  .toolchest
+  %label.dot{for: 'mainmenutoggle'}
+    %p.logocaption OneWolf
